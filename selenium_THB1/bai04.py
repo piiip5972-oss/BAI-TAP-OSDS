@@ -19,8 +19,8 @@ for i in range(65, 91):
         ul_tags = driver.find_elements(By.TAG_NAME, "ul")
         print(len(ul_tags))
 
-        # Chon the ul thu 21
-        ul_painters = ul_tags[20]   # list start with index=0
+        # Chon the ul thu 20
+        ul_painters = ul_tags[19]   # list start with index=0
 
         # Lay ra tat ca the <li> thuoc ul_painters
         li_tags = ul_painters.find_elements(By.TAG_NAME, "li")

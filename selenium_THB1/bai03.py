@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+
 #Khởi tạo
 driver = webdriver.Chrome()
 
@@ -15,17 +16,24 @@ time.sleep(2)
 ul_tags = driver.find_elements(By.TAG_NAME, "ul")
 print(len(ul_tags))
 
-#Chọn thẻ <ul> thứ 21 
-ul_painters = ul_tags[20]
+#Chọn thẻ <ul> thứ 20
+ul_painters = ul_tags[19]
 
 #Lấy tất cả thẻ <li> thuộc ul_painters
 li_tags = ul_painters.find_elements(By.TAG_NAME, "li")
 
-#Tạo danh sách URL của từng painter
-links = [tag.find_element(By.TAG_NAME, "a").get_attribute("href") for tag in li_tags]
+links = []
+titles = []
 
-#Tạo danh sách Title (tên painter)
-titles = [tag.find_element(By.TAG_NAME, "a").get_attribute("title") for tag in li_tags]
+# Tạo danh sách URL và Title
+for tag in li_tags:
+    try:
+        a = tag.find_element(By.TAG_NAME, "a")   # cố gắng tìm thẻ <a>
+        links.append(a.get_attribute("href"))
+        titles.append(a.get_attribute("title"))
+    except:
+        # nếu không có <a> thì bỏ qua
+        continue
 
 #In ra url
 for link in links:
@@ -35,5 +43,5 @@ for link in links:
 for title in titles:
     print(title)
 
-# Đóng webdriver
+#Đóng webdriver
 driver.quit()
