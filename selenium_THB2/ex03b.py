@@ -9,8 +9,8 @@ service = Service(gecko_path)
 
 options = webdriver.firefox.options.Options()
 options.binary_location = "C:/Program Files/Mozilla Firefox/firefox.exe"
-options.headless = False
-
+options.headless = False #chạy trình duyệt có giao diện
+#KHỞI TẠO TRÌNH DUYỆT
 driver = webdriver.Firefox(service=service, options=options)
 
 url = "https://daotao.hutech.edu.vn/default.aspx?page=dangnhap"

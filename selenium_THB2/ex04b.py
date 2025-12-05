@@ -10,7 +10,6 @@ import getpass
 from openpyxl import Workbook
 
 # SETUP
-
 driver = webdriver.Chrome()
 wait = WebDriverWait(driver, 15)
 actions = ActionChains(driver)
